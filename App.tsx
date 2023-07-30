@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Colors from './constants/colors';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState<number | undefined>();
@@ -54,19 +55,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      colors={[Colors.primary800, Colors.accent500]}
-      style={styles.rootScreen}
-    >
-      <ImageBackground
-        resizeMode='cover'
-        imageStyle={styles.imageBackground}
+    <>
+      <StatusBar style='light' />
+      <LinearGradient
+        colors={[Colors.primary800, Colors.accent500]}
         style={styles.rootScreen}
-        source={require(image)}
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          resizeMode='cover'
+          imageStyle={styles.imageBackground}
+          style={styles.rootScreen}
+          source={require(image)}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 

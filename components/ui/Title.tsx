@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Platform } from 'react-native';
 
 interface TitleProps {
   text: string;
@@ -15,8 +15,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#fff',
     textAlign: 'center',
-    borderWidth: 2,
+    // borderWidth: Platform.OS === 'android' ? 2 : 0,
+    borderWidth: Platform.select({ ios: 0, android: 2 }),
     borderColor: '#fff',
     padding: 10,
+    maxWidth: '80%',
+    width: 300,
   },
 });
